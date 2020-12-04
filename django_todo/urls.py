@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.documentation import include_docs_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/todo/',include("todo.urls")),
+    path('api/v1/todo/', include("todo.urls")),
     path('docs/', include_docs_urls(title='Todo Api')),
+    path('api/token', obtain_auth_token, name="auth_toke"),
 ]
